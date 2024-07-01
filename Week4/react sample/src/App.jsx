@@ -62,7 +62,7 @@ function App() {
 
     setTitle("");
     setDescription("");
-  };cd
+  };
 
   return (
     <div>
