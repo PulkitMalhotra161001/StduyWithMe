@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    First Number:<input type="number" placeholder="10" id="number1" />
+    <br />
+    Second Number:<input type="number" placeholder="20" id="number2" />
+    <br />
+    <button onclick="calculate2()">Calculate</button>
+    <p id="data"></p>
+  </body>
+  <script>
+    function calculate1() {
+      let a = document.getElementById("number1").valueAsNumber;
+      let b = document.getElementById("number2").valueAsNumber;
+
+      /*
+      document.getElementById("data").innerHTML = a+b;
+    */
+
+      //we want to call this api
+      fetch("https://sum-server.100xdevs.com/sum?a=" + a + "&b=" + b).then(
+        (res) => {
+          if (!res.ok) throw new Error(err);
+
+          //res can be in any format (we have to know the format) in this case it is text format response
+          res.text().then((ans) => {
+            document.getElementById("data").innerHTML = ans;
+          });
+        }
+      );
+      
+    }
+
+    async function calculate2() {
+      let a = document.getElementById("number1").valueAsNumber;
+      let b = document.getElementById("number2").valueAsNumber;
+
+    const res = await fetch(`https://sum-server.100xdevs.com/sum?a=${a}&b=${b}`)
+      const ans = await res.text()
+
+      document.getElementById("data").innerHTML = ans;
+    }
+  </script>
+</html>

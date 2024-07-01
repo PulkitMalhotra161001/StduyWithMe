@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container"></div>
+    <button onclick="fetchData()">Get Data</button>
+    <script>
+      function fetchData() {
+        fetch("https://fakerapi.it/api/v1/persons").then((response) => {
+          response.json().then((data) => {
+            var names = [];
+            for (let d in data.data) {
+              names.push(data.data[d].firstname + " " + data.data[d].lastname);
+            }
+            document.getElementById("container").innerHTML =
+              JSON.stringify(names);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

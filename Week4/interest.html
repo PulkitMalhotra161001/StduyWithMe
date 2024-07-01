@@ -1,0 +1,46 @@
+<!-- debouncing - wait for user input after send request for minimize backend call (happens on frontend) (dealy the call)-->
+<!-- Throttling - reposnding slowly even multiple request happens (happend on backend) (control the rate of execution)-->
+
+<!DOCTYPE html>
+<html>
+  <body>
+    <input
+      type="number"
+      placeholder="principal"
+      id="principal"
+      oninput="debounce()"
+    />
+    <br />
+    <input type="number" placeholder="rate" id="rate" oninput="debounce()" />
+    <br />
+    <input type="number" placeholder="time" id="time" oninput="debounce()" />
+    <p id="data"></p>
+  </body>
+  <script>
+    //if user typing then clear the previous req and wait for 1s (if user typed someting in 1s then clear previous call and wait again for 1s)
+    let timeout;
+    function debounce() {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => calculate(), 1000);
+    }
+    async function calculate() {
+      let principal = document.getElementById("principal").valueAsNumber;
+      let rate = document.getElementById("rate").valueAsNumber;
+      let time = document.getElementById("time").valueAsNumber;
+
+      //we can use axios library for API calls (it is simple and easily understandable)
+      const res = await fetch(
+        // `https://sum-server.100xdevs.com/interest?principal=${principal}&rate=${rate}&time=${time}`
+        `http://localhost:3000/interest?principal=${principal}&rate=${rate}&time=${time}`
+      );
+      const ans = await res.json();
+
+
+      var data = "";
+      data += "interest :" + ans.interest;
+      data += ", total :" + ans.total;
+
+      document.getElementById("data").innerHTML = data;
+    }
+  </script>
+</html>
