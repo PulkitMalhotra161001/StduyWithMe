@@ -10,8 +10,8 @@ function App() {
   return (
     <div>
       {/* save count state varible */}
-      <CountContext.Provider value={{count,setCount}}>
-      <Count ></Count>
+      <CountContext.Provider value={count}>
+      <Count setCount={setCount}></Count>
       </CountContext.Provider>
     </div>
   );
@@ -20,7 +20,7 @@ function App() {
 function Count({setCount}){
   return <div>
     <CountRerender/>
-    <Buttons />
+    <Buttons setCount={setCount}/>
   </div>
 }
 
@@ -32,8 +32,8 @@ function CountRerender(){
   </div>
 }
 
-function Buttons(){
-  const {count,setCount} = useContext(CountContext)
+function Buttons({setCount}){
+  const count = useContext(CountContext)
   return <div>
     <button onClick={()=>setCount(count+1)}>Increase</button>
     <button onClick={()=>setCount(count-1)}>Decrease</button>

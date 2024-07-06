@@ -16,10 +16,10 @@ function App() {
       {/* useNavigate used to navigate between pages and it must be made inside BrowserRouter */}
       <Appbar />
       <Routes>
-        {/* routes take some seconds to render in between the time what it will render handled by suspense */}
         <Route
           path="/dashboard"
           element={
+            //  routes take some seconds to render in between the time what it will render handled by suspense 
             <Suspense fallback={"..loading"}>
               {" "}
               <Dashboard />
@@ -29,7 +29,7 @@ function App() {
         <Route
           path="/"
           element={
-            <Suspense fallback={"..loading"}>
+            <Suspense fallback={<div>Loading...</div>}>
               {" "}
               <Landing />
             </Suspense>
