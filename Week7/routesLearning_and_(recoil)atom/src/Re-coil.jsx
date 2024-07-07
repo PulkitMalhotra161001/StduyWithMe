@@ -4,7 +4,7 @@ import {
   useRecoilValue,
   useSetRecoilState,
 } from "recoil";
-import { countAtom, evenSelector } from "../store/atoms/count";
+import { countAtom, evenSelector } from "./store/atoms/count";
 
 function App() {
   return (

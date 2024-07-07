@@ -11,8 +11,9 @@ export const countAtom = atom({
 // evenSelector dependes on countAtom so we get countAtom value and returning
 export const evenSelector = selector({
   key: "evenSelector",
-  // functionName inside this we have access to get function
+  // functionName inside this we have access to 
   get: ( {get} ) => {
+    //here using props we can have the value of countAtom
     const count = get(countAtom);
     return count % 2;
   },
