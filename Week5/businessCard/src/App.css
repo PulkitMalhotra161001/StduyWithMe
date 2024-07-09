@@ -1,0 +1,44 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+.card {
+  background-color: #eeeaea;
+  border: 1px solid grey;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px 1px grey;
+  margin: 40px;
+  padding: 40px 20px;
+}
+
+.card h4 {
+  font-family: Courier;
+  font-weight: normal;
+}
+
+.card h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0px;
+}
+
+.social a {
+  text-decoration: none;
+  background-color: #4da3e9;
+  color: #eeeaea;
+  border-radius: 7px;
+  margin: 5px;
+  padding: 7px;
+}
+
+.card > * + * {
+  margin-top: 10px;
+}
+.interest h6 {
+  font-family: Courier;
+  font-weight: normal;
+  color: gray;
+}

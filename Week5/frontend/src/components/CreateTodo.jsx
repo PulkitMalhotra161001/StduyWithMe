@@ -42,7 +42,7 @@ export function CreateTodo() {
       },
     }).then(async (res) => {
       const data = await res.json();
-      setTodos(data.todos);
+      alert("ToDo added")
     });
   }
 }
